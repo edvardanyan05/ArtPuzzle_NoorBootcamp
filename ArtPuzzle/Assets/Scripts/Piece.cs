@@ -5,6 +5,8 @@ public class Piece : MonoBehaviour
     [Header("Board Position")]
     public Transform currentPos;
 
+    public Transform correctPos;
+
     [Header("Visual")]
     public Transform visual;
 
@@ -14,10 +16,24 @@ public class Piece : MonoBehaviour
     public float swapDistance = 2f;
 
     private Vector3 offset;
+
     private bool isDragging = false;
+
+    private bool isLocked = false;
+
+    private BoardManager boardManager;
+
+    void Start()
+    {
+        boardManager = FindObjectOfType<BoardManager>();
+        CheckIfCorrect();
+    }
 
     void OnMouseDown()
     {
+        if (isLocked)
+            return;
+
         isDragging = true;
 
         visual.localPosition = Vector3.up * liftAmount;
@@ -35,13 +51,16 @@ public class Piece : MonoBehaviour
 
     void OnMouseUp()
     {
+        if (isLocked)
+            return;
+
         isDragging = false;
 
         visual.localPosition = Vector3.zero;
 
         Piece nearestPiece = GetNearestPiece();
 
-        if (nearestPiece != null)
+        if (nearestPiece != null && !nearestPiece.isLocked)
         {
             Swap(nearestPiece);
         }
@@ -100,10 +119,29 @@ public class Piece : MonoBehaviour
 
         transform.position = currentPos.position;
         other.transform.position = other.currentPos.position;
+
+        CheckIfCorrect();
+        other.CheckIfCorrect();
     }
 
     void ReturnToPosition()
     {
         transform.position = currentPos.position;
+    }
+
+    void CheckIfCorrect()
+    {
+        if (currentPos == correctPos)
+        {
+            isLocked = true;
+
+            Debug.Log(gameObject.name + " LOCKED");
+        }else 
+            isLocked = false;
+        boardManager.CheckWin();
+    }
+    public bool IsLocked()
+    {
+        return isLocked;
     }
 }
