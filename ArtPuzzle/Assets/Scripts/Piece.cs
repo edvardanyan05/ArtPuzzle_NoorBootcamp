@@ -17,6 +17,9 @@ public class Piece : MonoBehaviour
     [Header("Settings")]
     public float liftAmount = 0.3f;
     public float swapDistance = 2f;
+    
+    [Header("Effects")]
+    public GameObject sparklePrefab;
 
     private Vector3 offset;
     private bool isDragging = false;
@@ -32,6 +35,7 @@ public class Piece : MonoBehaviour
     void OnMouseDown()
     {
         if (isLocked) return;
+        boardManager.ResetHintTimer();
         isDragging = true;
         visual.localPosition = Vector3.up * liftAmount;
         offset = transform.position - GetMouseWorldPosition();
@@ -106,6 +110,7 @@ public class Piece : MonoBehaviour
         if (currentPos == correctPos)
         {
             isLocked = true;
+            PlaySparkle();
             Debug.Log(gameObject.name + " LOCKED");
         }
         else
@@ -113,6 +118,15 @@ public class Piece : MonoBehaviour
             isLocked = false;
         }
         boardManager.CheckWin();
+    }
+
+    void PlaySparkle()
+    {
+        if (sparklePrefab == null) return;
+
+        Vector3 spawnPos = visual.position + Vector3.up * 0.8f;
+        GameObject sparkle = Instantiate(sparklePrefab, spawnPos, Quaternion.identity);
+        Destroy(sparkle, 2f);
     }
 
     public bool IsLocked() => isLocked;
