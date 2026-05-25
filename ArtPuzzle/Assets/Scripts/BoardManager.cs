@@ -16,6 +16,10 @@ public class BoardManager : MonoBehaviour
     public int gridHeight = 2;
     public float animationDuration = 0.6f;
 
+    [Header("Win/Lose Panels")]
+    public RectTransform WinPanel;
+    public RectTransform LosePanel;
+
     [Header("Hint")]
     public float hintDelay = 2f;
     public float hintRotateAngle = 15f;
@@ -195,6 +199,7 @@ public class BoardManager : MonoBehaviour
 
         seq.OnComplete(() =>
         {
+            WinPanel.DOAnchorPosX(0f, 0.5f).SetEase(Ease.OutCubic);
             Debug.Log("Ready to show Win UI!");
         });
     }
@@ -203,6 +208,7 @@ public class BoardManager : MonoBehaviour
     {
         hasLost = true;
         StopHint();
+        LosePanel.DOAnchorPosX(0f, 0.5f).SetEase(Ease.OutCubic);
         Debug.Log("YOU LOSE!");
     }
 }
