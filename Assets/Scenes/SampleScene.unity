@@ -346,7 +346,7 @@ Transform:
   m_GameObject: {fileID: 113175836}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.22499987, z: 1.5000001}
+  m_LocalPosition: {x: 5.29, y: 0.22499987, z: 1.5000001}
   m_LocalScale: {x: 1.371104, y: 0.6371383, z: 1.371104}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -619,6 +619,14 @@ MonoBehaviour:
   - {fileID: 1261930237}
   timeLimit: 20
   timerText: {fileID: 2133491685}
+  gridWidth: 2
+  gridHeight: 2
+  animationDuration: 0.6
+  WinPanel: {fileID: 0}
+  LosePanel: {fileID: 0}
+  hintDelay: 2
+  hintRotateAngle: 15
+  hintRotateSpeed: 0.6
 --- !u!1 &230950428
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,8 +697,12 @@ MonoBehaviour:
   currentPos: {fileID: 1999582869}
   correctPos: {fileID: 954704160}
   visual: {fileID: 1525651767}
+  plane: {fileID: 0}
+  correctRow: 0
+  correctCol: 0
   liftAmount: 0.3
   swapDistance: 2
+  sparklePrefab: {fileID: 0}
 --- !u!1 &273289443
 GameObject:
   m_ObjectHideFlags: 0
@@ -2535,8 +2547,12 @@ MonoBehaviour:
   currentPos: {fileID: 954704160}
   correctPos: {fileID: 1999582869}
   visual: {fileID: 2133081380}
+  plane: {fileID: 0}
+  correctRow: 0
+  correctCol: 0
   liftAmount: 0.3
   swapDistance: 2
+  sparklePrefab: {fileID: 0}
 --- !u!1 &1192022449
 GameObject:
   m_ObjectHideFlags: 0
@@ -2690,8 +2706,12 @@ MonoBehaviour:
   currentPos: {fileID: 18879699}
   correctPos: {fileID: 789320800}
   visual: {fileID: 273289444}
+  plane: {fileID: 0}
+  correctRow: 0
+  correctCol: 0
   liftAmount: 0.3
   swapDistance: 2
+  sparklePrefab: {fileID: 0}
 --- !u!1 &1431892538
 GameObject:
   m_ObjectHideFlags: 0
@@ -4421,8 +4441,12 @@ MonoBehaviour:
   currentPos: {fileID: 789320800}
   correctPos: {fileID: 18879699}
   visual: {fileID: 914712295}
+  plane: {fileID: 0}
+  correctRow: 0
+  correctCol: 0
   liftAmount: 0.3
   swapDistance: 2
+  sparklePrefab: {fileID: 0}
 --- !u!65 &2143102225
 BoxCollider:
   m_ObjectHideFlags: 0
