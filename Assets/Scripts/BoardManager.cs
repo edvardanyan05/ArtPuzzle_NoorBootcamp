@@ -199,7 +199,7 @@ public class BoardManager : MonoBehaviour
 
         seq.OnComplete(() =>
         {
-            WinPanel.DOAnchorPosX(0f, 0.5f).SetEase(Ease.OutCubic);
+            WinPanel.DOAnchorPosX(0f, 0.5f).SetEase(Ease.OutCubic).SetDelay(1.5f);
             Debug.Log("Ready to show Win UI!");
         });
     }

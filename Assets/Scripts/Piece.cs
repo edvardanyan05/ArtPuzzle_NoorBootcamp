@@ -17,7 +17,7 @@ public class Piece : MonoBehaviour
     [Header("Settings")]
     public float liftAmount = 0.3f;
     public float swapDistance = 2f;
-    
+
     [Header("Effects")]
     public GameObject sparklePrefab;
 
@@ -124,8 +124,15 @@ public class Piece : MonoBehaviour
     {
         if (sparklePrefab == null) return;
 
-        Vector3 spawnPos = visual.position + Vector3.up * 0.8f;
+        Vector3 spawnPos = visual.position + Vector3.up * 0.3f;
         GameObject sparkle = Instantiate(sparklePrefab, spawnPos, Quaternion.identity);
+
+        sparkle.transform.localScale = visual.lossyScale * 3f;
+
+        ParticleSystem ps = sparkle.GetComponent<ParticleSystem>();
+        if (ps != null)
+            ps.Play();
+
         Destroy(sparkle, 2f);
     }
 
