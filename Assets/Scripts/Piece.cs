@@ -15,7 +15,7 @@ public class Piece : MonoBehaviour
     public int correctCol;
 
     [Header("Settings")]
-    public float liftAmount = 0.3f;
+    public float liftAmount = 0.5f;
     public float swapDistance = 2f;
 
     [Header("Effects")]
@@ -44,7 +44,9 @@ public class Piece : MonoBehaviour
     void OnMouseDrag()
     {
         if (!isDragging) return;
-        transform.position = GetMouseWorldPosition() + offset;
+        Vector3 newPos = GetMouseWorldPosition() + offset;
+        newPos.y = currentPos.position.y;
+        transform.position = newPos;
     }
 
     void OnMouseUp()
@@ -126,7 +128,6 @@ public class Piece : MonoBehaviour
 
         Vector3 spawnPos = visual.position + Vector3.up * 0.3f;
         GameObject sparkle = Instantiate(sparklePrefab, spawnPos, Quaternion.identity);
-
         sparkle.transform.localScale = visual.lossyScale * 3f;
 
         ParticleSystem ps = sparkle.GetComponent<ParticleSystem>();
@@ -137,6 +138,5 @@ public class Piece : MonoBehaviour
     }
 
     public bool IsLocked() => isLocked;
-
     public void DisableInteraction() => isLocked = true;
 }
