@@ -16,6 +16,7 @@ public class FloatingImage : MonoBehaviour
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+        all.RemoveAll(item => item == null);
         all.Add(this);
     }
 
@@ -104,13 +105,19 @@ public class FloatingImage : MonoBehaviour
 
     void CheckCollisions()
     {
-        foreach (FloatingImage other in all)
+        for (int i = all.Count - 1; i >= 0; i--)
         {
-            if (other == this) continue;
+            if (all[i] == null)
+            {
+                all.RemoveAt(i);
+                continue;
+            }
 
-            Vector2 diff = (Vector2)rectTransform.position - (Vector2)other.rectTransform.position;
+            if (all[i] == this) continue;
+
+            Vector2 diff = (Vector2)rectTransform.position - (Vector2)all[i].rectTransform.position;
             float dist = diff.magnitude;
-            float minDist = halfSize.x + other.halfSize.x;
+            float minDist = halfSize.x + all[i].halfSize.x;
 
             if (dist < minDist && dist > 0.01f)
             {

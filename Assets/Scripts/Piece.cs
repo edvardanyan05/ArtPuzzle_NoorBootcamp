@@ -35,6 +35,7 @@ public class Piece : MonoBehaviour
     void OnMouseDown()
     {
         if (isLocked) return;
+        if (boardManager.IsPaused()) return;
         boardManager.ResetHintTimer();
         isDragging = true;
         visual.localPosition = Vector3.up * liftAmount;
@@ -100,6 +101,7 @@ public class Piece : MonoBehaviour
 
         CheckIfCorrect();
         other.CheckIfCorrect();
+        AudioManager.Instance?.PlaySwap();
     }
 
     void ReturnToPosition()
@@ -114,6 +116,7 @@ public class Piece : MonoBehaviour
             isLocked = true;
             PlaySparkle();
             Debug.Log(gameObject.name + " LOCKED");
+            AudioManager.Instance?.PlayPieceLocked();
         }
         else
         {

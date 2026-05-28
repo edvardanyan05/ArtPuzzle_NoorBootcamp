@@ -16,4 +16,10 @@ public class MenuPanels : MonoBehaviour
         levelPanel.DOAnchorPosX(-80f, duration).SetEase(Ease.OutCubic);
 
     }
+
+    public void HideInLevel()
+    {
+        levelPanel.DOAnchorPosX(-2000f, duration).SetEase(Ease.OutCubic);
+
+    }
 }
