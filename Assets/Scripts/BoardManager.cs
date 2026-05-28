@@ -25,6 +25,9 @@ public class BoardManager : MonoBehaviour
     public float hintRotateAngle = 15f;
     public float hintRotateSpeed = 0.6f;
 
+    [Header("Timer Bar")]
+    public UnityEngine.UI.Image timerBar;
+
     private float currentTime;
     private bool hasWon = false;
     private bool hasLost = false;
@@ -52,6 +55,8 @@ public class BoardManager : MonoBehaviour
 
         currentTime -= Time.deltaTime;
         timerText.text = Mathf.Ceil(currentTime).ToString();
+        if (timerBar != null)
+            timerBar.fillAmount = currentTime / timeLimit;
         if (currentTime <= 0f)
         {
             Lose();
