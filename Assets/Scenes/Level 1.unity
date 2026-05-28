@@ -658,7 +658,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dbd4380a4f7c2664aa4122d085d6cd72, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e886aeedca3acb498681fd92fee8444, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1021,6 +1021,7 @@ MonoBehaviour:
   hintDelay: 2
   hintRotateAngle: 5
   hintRotateSpeed: 0.6
+  timerBar: {fileID: 1588501815}
 --- !u!1 &230950428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1992,7 +1993,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1588501814}
+  - {fileID: 1065458958}
   - {fileID: 2133491684}
   - {fileID: 780727137}
   - {fileID: 449598219}
@@ -2024,6 +2025,7 @@ GameObject:
   - component: {fileID: 736324291}
   - component: {fileID: 736324294}
   - component: {fileID: 736324295}
+  - component: {fileID: 736324296}
   m_Layer: 5
   m_Name: RestartLevelButton
   m_TagString: Untagged
@@ -2106,6 +2108,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 736324296}
+        m_TargetAssemblyTypeName: PlayMainMusic, Assembly-CSharp
+        m_MethodName: PlayMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &736324292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2168,6 +2182,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e461fb2c202878b4cae23d098621daf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
+--- !u!114 &736324296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736324289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74a22637036566b4b890974d360db52b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &780727136
 GameObject:
   m_ObjectHideFlags: 0
@@ -2573,6 +2599,8 @@ GameObject:
   - component: {fileID: 830241670}
   - component: {fileID: 830241669}
   - component: {fileID: 830241672}
+  - component: {fileID: 830241673}
+  - component: {fileID: 830241674}
   m_Layer: 5
   m_Name: NextLevelButton
   m_TagString: Untagged
@@ -2642,7 +2670,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 830241670}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 830241673}
+        m_TargetAssemblyTypeName: PlayMainMusic, Assembly-CSharp
+        m_MethodName: PlayMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 830241674}
+        m_TargetAssemblyTypeName: NextLevel, Assembly-CSharp
+        m_MethodName: Next
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &830241670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2693,6 +2745,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e461fb2c202878b4cae23d098621daf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
+--- !u!114 &830241673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830241667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74a22637036566b4b890974d360db52b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayMainMusic
+--- !u!114 &830241674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830241667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c357f083be7ffb744a9a12e3a21ce29f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &837084483
 GameObject:
   m_ObjectHideFlags: 0
@@ -2782,6 +2858,7 @@ GameObject:
   - component: {fileID: 842995219}
   - component: {fileID: 842995222}
   - component: {fileID: 842995223}
+  - component: {fileID: 842995224}
   m_Layer: 5
   m_Name: HomeButton
   m_TagString: Untagged
@@ -2864,6 +2941,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 842995224}
+        m_TargetAssemblyTypeName: PlayMainMusic, Assembly-CSharp
+        m_MethodName: PlayMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &842995220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2926,6 +3015,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e461fb2c202878b4cae23d098621daf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
+--- !u!114 &842995224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842995217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74a22637036566b4b890974d360db52b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayMainMusic
 --- !u!1001 &891530688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3828,14 +3929,15 @@ RectTransform:
   m_GameObject: {fileID: 1065458957}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.175, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1588501814}
+  m_Children:
+  - {fileID: 1588501814}
+  m_Father: {fileID: 716670830}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030636787, y: -64.00012}
+  m_AnchoredPosition: {x: -1.8293, y: 716}
   m_SizeDelta: {x: 875.4398, y: 52.0639}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1065458959
@@ -4747,7 +4849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d327689b5af266419c84ef51d725dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  duration: 0.4
+  duration: 0.5
   hiddenX: 800
 --- !u!1 &1336153646
 GameObject:
@@ -5075,6 +5177,7 @@ GameObject:
   - component: {fileID: 1433689714}
   - component: {fileID: 1433689717}
   - component: {fileID: 1433689718}
+  - component: {fileID: 1433689719}
   m_Layer: 5
   m_Name: HomeButton
   m_TagString: Untagged
@@ -5157,6 +5260,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1433689719}
+        m_TargetAssemblyTypeName: PlayMainMusic, Assembly-CSharp
+        m_MethodName: PlayMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1433689715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5219,6 +5334,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e461fb2c202878b4cae23d098621daf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
+--- !u!114 &1433689719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433689712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74a22637036566b4b890974d360db52b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayMainMusic
 --- !u!1 &1507620180
 GameObject:
   m_ObjectHideFlags: 0
@@ -5326,81 +5453,6 @@ Transform:
   - {fileID: 789444095}
   m_Father: {fileID: 230950429}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1560768515
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1560768516}
-  - component: {fileID: 1560768518}
-  - component: {fileID: 1560768517}
-  m_Layer: 5
-  m_Name: WatchElement
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1560768516
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1560768515}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1588501814}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 121.5398, y: 15.732056}
-  m_SizeDelta: {x: 29.1765, y: 83.5312}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1560768517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1560768515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d390c519936ebd04d9d934bd4e9fd605, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1560768518
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1560768515}
-  m_CullTransparentMesh: 1
 --- !u!1 &1588501813
 GameObject:
   m_ObjectHideFlags: 0
@@ -5430,14 +5482,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1065458958}
-  - {fileID: 1560768516}
-  m_Father: {fileID: 716670830}
+  m_Children: []
+  m_Father: {fileID: 1065458958}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.8293, y: 736}
+  m_AnchoredPosition: {x: -0.000030636787, y: 0.000061035156}
   m_SizeDelta: {x: 875.4398, y: 52.0639}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1588501815
@@ -5461,10 +5511,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: c1d4f19fa67fc1143bbe48e29575b8be, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -6369,7 +6419,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -46, y: -765}
+  m_AnchoredPosition: {x: -46, y: 4938}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2133491685
