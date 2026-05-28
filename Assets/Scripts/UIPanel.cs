@@ -15,7 +15,7 @@ public class UIPanel : MonoBehaviour
 
     private void Awake()
     {
-        boardManager = FindObjectOfType<BoardManager>();
+        boardManager = FindFirstObjectByType<BoardManager>();
         transform.localScale = Vector3.zero;
         gameObject.SetActive(false);
     }

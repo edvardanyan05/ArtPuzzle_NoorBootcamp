@@ -170,6 +170,7 @@ public class BoardManager : MonoBehaviour
 
     void Win()
     {
+        AudioManager.Instance?.PlayWinMusic();
         foreach (Piece piece in allPieces)
             piece.DisableInteraction();
 
@@ -206,9 +207,11 @@ public class BoardManager : MonoBehaviour
 
     void Lose()
     {
+        AudioManager.Instance?.PlayLoseMusic();
         hasLost = true;
         StopHint();
         LosePanel.DOAnchorPosX(0f, 0.5f).SetEase(Ease.OutCubic);
         Debug.Log("YOU LOSE!");
     }
+    public bool IsPaused() => isPaused;
 }

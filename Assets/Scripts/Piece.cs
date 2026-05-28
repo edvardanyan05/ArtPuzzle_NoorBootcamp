@@ -15,7 +15,7 @@ public class Piece : MonoBehaviour
     public int correctCol;
 
     [Header("Settings")]
-    public float liftAmount = 0.3f;
+    public float liftAmount = 0.5f;
     public float swapDistance = 2f;
 
     [Header("Effects")]
@@ -35,6 +35,7 @@ public class Piece : MonoBehaviour
     void OnMouseDown()
     {
         if (isLocked) return;
+        if (boardManager.IsPaused()) return;
         boardManager.ResetHintTimer();
         isDragging = true;
         visual.localPosition = Vector3.up * liftAmount;
@@ -44,7 +45,9 @@ public class Piece : MonoBehaviour
     void OnMouseDrag()
     {
         if (!isDragging) return;
-        transform.position = GetMouseWorldPosition() + offset;
+        Vector3 newPos = GetMouseWorldPosition() + offset;
+        newPos.y = currentPos.position.y;
+        transform.position = newPos;
     }
 
     void OnMouseUp()
@@ -98,6 +101,7 @@ public class Piece : MonoBehaviour
 
         CheckIfCorrect();
         other.CheckIfCorrect();
+        AudioManager.Instance?.PlaySwap();
     }
 
     void ReturnToPosition()
@@ -112,6 +116,7 @@ public class Piece : MonoBehaviour
             isLocked = true;
             PlaySparkle();
             Debug.Log(gameObject.name + " LOCKED");
+            AudioManager.Instance?.PlayPieceLocked();
         }
         else
         {
@@ -126,7 +131,6 @@ public class Piece : MonoBehaviour
 
         Vector3 spawnPos = visual.position + Vector3.up * 0.3f;
         GameObject sparkle = Instantiate(sparklePrefab, spawnPos, Quaternion.identity);
-
         sparkle.transform.localScale = visual.lossyScale * 3f;
 
         ParticleSystem ps = sparkle.GetComponent<ParticleSystem>();
@@ -137,6 +141,5 @@ public class Piece : MonoBehaviour
     }
 
     public bool IsLocked() => isLocked;
-
     public void DisableInteraction() => isLocked = true;
 }
