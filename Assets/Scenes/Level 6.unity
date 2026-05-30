@@ -1766,6 +1766,12 @@ MonoBehaviour:
   hintRotateAngle: 5
   hintRotateSpeed: 0.6
   timerBar: {fileID: 1588501815}
+  frozenPieces:
+  - {fileID: 1109096898}
+  - {fileID: 237436061}
+  - {fileID: 333669381}
+  - {fileID: 1553020241}
+  unlockAfterLocked: 4
 --- !u!1001 &230917249
 PrefabInstance:
   m_ObjectHideFlags: 0
